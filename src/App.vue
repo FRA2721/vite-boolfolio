@@ -1,28 +1,39 @@
 <!-- script section -->
 <script>
-import AppHeader from './components/AppHeader.vue';
-export default {
-  name: "App",
-  components: {
-    AppHeader,
+  // import components
+  import AppHeader from './components/AppHeader.vue';
+  import AppMain from './components/AppMain.vue';
+  
+  export default {
+    // name
+    name: "App",
+    components: {
+      AppHeader,
+      AppMain
+    }
   }
-}
 </script>
-<!-- /script section -->
+<!-- &script section -->
 
 
 
-<!-- template section -->
+<!-- tempalte section -->
 <template>
 
   <!-- header section -->
   <header>
     <AppHeader />
-  </header> 
+  </header>
   <!-- /header section -->
 
+  <!-- main section -->
+  <main>
+    <AppMain />
+  </main>
+  <!-- /main section -->
+  
 </template>
-<!-- /template section -->
+<!-- /tempalte section -->
 
 
 

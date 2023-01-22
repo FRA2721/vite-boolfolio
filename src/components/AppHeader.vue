@@ -1,28 +1,53 @@
-<!-- script section AppHeader -->
+<!-- script section -->
 <script>
 export default{
-  name: "AppHeader",
-  data() {
-      return {
-    }
-  }
+  // name
+    name: "AppHeader"
 }
 </script>
-<!-- /script section AppHeader -->
+<!-- /script section -->
 
 
 
-<!-- template section AppHeader -->
+<!-- tempalte section -->
 <template>
   <header>
-    header section
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <a class="navbar-text me-4" href="http://127.0.0.1:8000/admin">
+          Admin 
+        </a>
+      </div>
+    </nav>
   </header>
 </template>
-<!-- /template section AppHeader -->
+<!-- tempalte section -->
 
 
 
-<!-- style section AppHeader -->
+<!-- style section -->
 <style lang="scss" scoped>
+a{
+  text-decoration: none;
+}
 </style>
-<!-- /style section AppHEader -->
+<!-- /style section -->
