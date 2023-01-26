@@ -1,4 +1,4 @@
-script sectionk
+<!-- script section -->
 <script>
 export default{
   // anme

@@ -3,46 +3,55 @@
 
 // import libraries & components
 import axios from 'axios';
-import AppLoader from './AppLoading.vue';
+import AppLoading from './AppLoading.vue';
 import PostCard from './PostCard.vue';
 
 export default{
   // name
-    name: "AppMain",
-    components: {
-      AppLoader,
-      PostCard
-    },
+  name: "AppMain",
+  components: {
+    AppLoading,
+    PostCard
+  },
 
-    data(){
-      return{
-        baseUrl: "http://127.0.0.1:8000",
-        posts: [],
-        loading: false
-      }
-    },
-
-    methods: {
-      getposts(){
-      this.loading = true;
-
-      // axios call
-      axios
-        .get(this.baseUrl + "/api/posts")
-
-        .then( resp => {
-          console.log(resp);
-          this.posts = resp.data.response;
-          this.loading = false;
-          
-        }).catch( err => { //errors
-          console.log(err);
-        })
-      }
-    },
-    created() {
-      this.getposts();
+  data(){
+    return{
+      baseUrl: "http://127.0.0.1:8000",
+      posts: [],
+      currentPage: 1,
+      lastPage: null,
+      totalPosts: null,
+      loading: true
     }
+  },
+
+  created() {
+    this.getPosts(1);
+  },
+
+  methods: {
+    getPosts(page){
+      const options = {
+        params:{
+          page
+        }          
+      } 
+
+    // axios call
+    axios.get(this.baseUrl + "/api/posts", options).then( resp => {
+        // console.log(resp.data.response);
+        // this.posts = resp.data.response;
+        this.post = resp.data.response.data;
+        this.currentPage = resp.data.response.current_page;
+        this.lastPage = resp.data.response.last_page;
+        this.totalPosts = resp.data.response.total;
+        this.loading = false;
+        
+      }).catch( err => { //errors
+        console.log(err);
+      })
+    }
+  }
 }
 </script>
 <!-- /script section -->
@@ -54,9 +63,20 @@ export default{
   <div class="container">
     <h2 class="my-3 text-center">Post section</h2>
     <AppLoading v-if="loading" />
-    <div v-else class="row justify-content-center">
+    <div v-else class="row justify-content-center py-4">
       <div class="col-11 col-md-10 col-lg-8">
-        <PostCard :post="post" v-for="post in posts" :key="post.id" :baseUrl="baseUrl"/>
+        <PostCard :post="post" v-for="post in posts" :key="post.id" />
+
+        <!-- paginate -->
+        <nav class="navigation d-flex justify-content-end">
+          <div>
+            <h6>Page {{ currentPage }} of {{ lastPage }}</h6>
+          </div>
+          <a class="btn btn-succes" :class="currentPage === 1 ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage - 1)">Back</a>
+
+          <a class="btn btn-succes" :class="currentPage === lastPage ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage + 1)">Next</a>
+        </nav>
+
       </div>
     </div>
   </div>
