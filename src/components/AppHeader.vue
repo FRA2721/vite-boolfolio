@@ -20,9 +20,13 @@ export default{
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <!-- home link -->
             <li class="nav-item">
               <router-link :to="{name: 'home'}" class="nav-link active" aria-current="page" href="#">Home</router-link>
             </li>
+
+            <!-- about us link -->
             <li class="nav-item">
               <router-link :to="{name: 'about-us'}" class="nav-link" href="#">About Us</router-link>
             </li>
