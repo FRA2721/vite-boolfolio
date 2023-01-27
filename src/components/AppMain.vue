@@ -10,8 +10,8 @@ export default{
   // name
   name: "AppMain",
   components: {
-    AppLoading,
-    PostCard
+    PostCard,
+    AppLoading
   },
 
   data(){
@@ -21,7 +21,7 @@ export default{
       currentPage: 1,
       lastPage: null,
       totalPosts: null,
-      loading: true
+      loading: false
     }
   },
 
@@ -31,17 +31,16 @@ export default{
 
   methods: {
     getPosts(page){
-      const options = {
-        params:{
-          page
-        }          
-      } 
-
-    // axios call
-    axios.get(this.baseUrl + "/api/posts", options).then( resp => {
-        // console.log(resp.data.response);
-        // this.posts = resp.data.response;
-        this.post = resp.data.response.data;
+      this.loading = true; 
+      // axios call
+      axios.get(this.baseUrl + "/api/posts", {
+        params: {
+          page: page
+        }
+      }).then( resp => {
+        console.log(resp.data.response);
+        //this.posts = resp.data.response;
+        this.posts = resp.data.response.data;
         this.currentPage = resp.data.response.current_page;
         this.lastPage = resp.data.response.last_page;
         this.totalPosts = resp.data.response.total;
@@ -53,7 +52,7 @@ export default{
     }
   }
 }
-</script>
+</script> 
 <!-- /script section -->
 
 
@@ -72,9 +71,9 @@ export default{
           <div>
             <h6>Page {{ currentPage }} of {{ lastPage }}</h6>
           </div>
-          <a class="btn btn-succes" :class="currentPage === 1 ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage - 1)">Back</a>
+          <a class="btn btn-success" :class="currentPage === 1 ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage - 1)">Back</a>
 
-          <a class="btn btn-succes" :class="currentPage === lastPage ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage + 1)">Next</a>
+          <a class="btn btn-success" :class="currentPage === lastPage ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage + 1)">Next</a>
         </nav>
 
       </div>

@@ -1,7 +1,7 @@
 <!-- script section -->
 <script>
 export default{
-  // anme
+  // name
     name: "PostCard",
     props: {
       post: Object,
