@@ -2,14 +2,12 @@
 <script>
   // import components
   import AppHeader from './components/AppHeader.vue';
-  import AppMain from './components/AppMain.vue';
   
   export default {
     // name
     name: "App",
     components: {
       AppHeader,
-      AppMain
     }
   }
 </script>
@@ -26,12 +24,12 @@
   </header>
   <!-- /header section -->
 
-  <!-- main section -->
+  <!-- main section / router-view -->
   <main>
-    <AppMain />
+    <router-view></router-view>
   </main>
-  <!-- /main section -->
-  
+  <!-- /main section / router-view -->
+
 </template>
 <!-- /tempalte section -->
 
