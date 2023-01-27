@@ -67,13 +67,16 @@ export default{
         <PostCard :post="post" v-for="post in posts" :key="post.id" />
 
         <!-- paginate -->
-        <nav class="navigation d-flex justify-content-end">
+        <nav class="paginate d-flex justify-content-between py-3">
           <div>
             <h6>Page {{ currentPage }} of {{ lastPage }}</h6>
           </div>
-          <a class="btn btn-success" :class="currentPage === 1 ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage - 1)">Back</a>
 
-          <a class="btn btn-success" :class="currentPage === lastPage ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage + 1)">Next</a>
+          <div>
+            <a class="btn btn-success me-2" :class="currentPage === 1 ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage - 1)">Back</a>
+            <a class="btn btn-success" :class="currentPage === lastPage ? 'disabled' : ''" href="" @click.prevent="getPosts(currentPage + 1)">Next</a>
+          </div>
+
         </nav>
 
       </div>
