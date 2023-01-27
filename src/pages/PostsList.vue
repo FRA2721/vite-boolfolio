@@ -3,8 +3,8 @@
 
 // import libraries & components
 import axios from 'axios';
-import AppLoading from './AppLoading.vue';
-import PostCard from './PostCard.vue';
+import AppLoading from '../components/AppLoading.vue';
+import PostCard from '../components/PostCard.vue';
 
 export default{
   // name

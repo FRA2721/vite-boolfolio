@@ -30,7 +30,13 @@ export default{
             <li class="nav-item">
               <router-link :to="{name: 'about-us'}" class="nav-link" href="#">About Us</router-link>
             </li>
+
+            <!-- posts link -->
+            <li>
+              <router-link :to="{name: 'posts'}" class="nav-link" href="#">Posts</router-link>
+            </li>
           </ul>
+          
         </div>
       </div>
       <div class="collapse navbar-collapse" id="navbarText">
